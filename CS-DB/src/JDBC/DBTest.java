@@ -23,9 +23,9 @@ public class DBTest {
         }
 
 
-        String url = "jdbc:postgresql://horton.elephantsql.com:5432/jpjkxtkp";
-        String username = "jpjkxtkp";
-        String password = "xxxx";
+        String url = "jdbc:postgresql://horton.elephantsql.com:5432/jhjuyqrt";
+        String username = "jhjuyqrt";
+        String password = "XCXIBixgeNFeQOrg48xmnMLo6ysy2Njr";
 
 
 
