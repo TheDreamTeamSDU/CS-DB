@@ -93,7 +93,7 @@ public class CSDB {
             while (rs.next()) {
                 System.out.println(String.format("%-20s %-20s", rs.getString(1), rs.getString(2)));
             }
-            System.out.print("-----------------------------------------");
+            System.out.println("-----------------------------------------");
             rs.close();
             st.close();
 
