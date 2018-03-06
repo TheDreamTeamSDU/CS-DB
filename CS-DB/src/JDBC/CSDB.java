@@ -87,10 +87,7 @@ public class CSDB {
             java.sql.Statement st = db.createStatement();
             ResultSet rs = st.executeQuery("select * from people");
             while (rs.next()) {
-
-                System.out.print(rs.getString(1) + "\t\t");
-                System.out.print(rs.getString(2) + "\t\t");
-                System.out.println(rs.getString(3));
+                System.out.println(String.format("%-20s %-20s %-20s", rs.getString(1), rs.getString(2),rs.getString(3)));
             }
 
             rs.close();
@@ -157,18 +154,14 @@ public class CSDB {
         scanner = new Scanner(System.in);
         System.out.println("Do you wish to quit?");
         System.out.println("press \"y\" to quit or \"n\" to make a new selection");
-        if (scanner.hasNext("y") || scanner.hasNext("n")) {
+        if (scanner.hasNext()) {
             String quit = scanner.next();
             switch (quit) {
                 case "y":
-                    System.exit(0);
-                    break;
-                case "n":
-                    newInput();
-                    break;
                 case "Y":
                     System.exit(0);
                     break;
+                case "n":
                 case "N":
                     newInput();
                     break;
@@ -190,7 +183,6 @@ public class CSDB {
         CSDB csdb = new CSDB();
         csdb.inputFromPlayer();
 
-        
     }
 
 }
