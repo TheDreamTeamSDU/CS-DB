@@ -102,6 +102,7 @@ public class CSDB {
         System.out.println("Input a number and press enter");
         if (scanner.hasNextInt()) {
             option4Value = scanner.nextInt();
+            System.out.println("Your input: " + option4Value);
             //Insert SQL query here with option4Value
 
         } else {
