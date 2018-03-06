@@ -79,15 +79,18 @@ public class CSDB {
      * method to handle the query for the first option
      */
     public void option1() {
-        System.out.println("Coaches and their team:");
+        System.out.println("\nCoaches and their team:");
         //Insert SQL query here
         try {
             Connection db = DriverManager.getConnection(url, username, password);
 
             java.sql.Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("select * from people");
+            ResultSet rs = st.executeQuery("SELECT People.name, Coaches.teamName\n"
+                    + "FROM Coaches\n"
+                    + "INNER JOIN People ON Coaches.coachName = People.nickname;");
+            System.out.println(String.format("%-20s %-20s", "Name", "Team name"));
             while (rs.next()) {
-                System.out.println(String.format("%-20s %-20s %-20s", rs.getString(1), rs.getString(2),rs.getString(3)));
+                System.out.println(String.format("%-20s %-20s", rs.getString(1), rs.getString(2)));
             }
 
             rs.close();
@@ -152,7 +155,7 @@ public class CSDB {
 
     public void wantToQuit() {
         scanner = new Scanner(System.in);
-        System.out.println("Do you wish to quit?");
+        System.out.println("\nDo you wish to quit?");
         System.out.println("press \"y\" to quit or \"n\" to make a new selection");
         if (scanner.hasNext()) {
             String quit = scanner.next();
