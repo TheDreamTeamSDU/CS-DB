@@ -177,8 +177,26 @@ public class CSDB {
         if (scanner.hasNextInt()) {
             option4Value = scanner.nextInt();
             System.out.println("Your input: " + option4Value);
-            //Insert SQL query here with option4Value
+            try {
+                Connection db = DriverManager.getConnection(url, username, password);
 
+                java.sql.Statement st = db.createStatement();
+                ResultSet rs = st.executeQuery("SELECT tournamentName\n"
+                        + "FROM PlaysIn\n"
+                        + "GROUP BY tournamentName\n" +
+                "HAVING COUNT(teamName) = "+option4Value);
+                System.out.println(String.format("%-20s %-20s", "Name", "Amount"));
+                System.out.println("-----------------------------------------");
+                while (rs.next()) {
+                    System.out.println(String.format("%-20s", rs.getString(1)));
+                }
+                System.out.println("-----------------------------------------");
+                rs.close();
+                st.close();
+
+            } catch (Exception e) {
+                System.out.println(e);
+            }
         } else {
             System.out.println("Wrong input. Tray again");
             option4();
