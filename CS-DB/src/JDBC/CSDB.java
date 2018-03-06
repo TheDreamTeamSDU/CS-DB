@@ -86,8 +86,8 @@ public class CSDB {
 
             java.sql.Statement st = db.createStatement();
             ResultSet rs = st.executeQuery("SELECT People.name, Coaches.teamName\n"
-                    + "FROM Coaches\n"
-                    + "INNER JOIN People ON Coaches.coachName = People.nickname;");
+                                         + "FROM Coaches\n"
+                                         + "INNER JOIN People ON Coaches.coachName = People.nickname;");
             System.out.println(String.format("%-20s %-20s", "Name", "Team name"));
             while (rs.next()) {
                 System.out.println(String.format("%-20s %-20s", rs.getString(1), rs.getString(2)));
