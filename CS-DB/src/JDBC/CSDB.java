@@ -37,7 +37,7 @@ public class CSDB {
      */
     public void inputFromPlayer() {
         scanner = new Scanner(System.in);
-        System.out.println("Input a number and press enter");
+        System.out.println("Input a number and press enter (or -1 to quit)");
         if (scanner.hasNextInt()) {
             inputValue = scanner.nextInt();
             switch (inputValue) {
@@ -52,6 +52,9 @@ public class CSDB {
                     break;
                 case 4:
                     option4();
+                    break;
+                case -1:
+                    wantToQuit();
                     break;
                 default:
                     wrongInput();
@@ -147,7 +150,7 @@ public class CSDB {
                     System.out.println("wrong input");
                     wantToQuit();
             }
-        }else{
+        } else {
             wantToQuit();
         }
     }
