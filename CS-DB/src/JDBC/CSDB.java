@@ -1,6 +1,10 @@
 package JDBC;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.util.Scanner;
+import jdk.nashorn.internal.ir.Statement;
 
 /*
 	Run with:
@@ -11,8 +15,15 @@ public class CSDB {
     private Scanner scanner;
     private int inputValue;
     private int option4Value;
+    private static String url;
+    private static String username;
+    private static String password;
 
     public CSDB() {
+        url = "jdbc:postgresql://horton.elephantsql.com:5432/dluumnvl";
+        username = "dluumnvl";
+        password = "QmaWW2yvG8QXAgH6o2WdsbzCkIxLfkBk";
+        initSQLDB();
         printWelcome();
     }
 
@@ -69,8 +80,26 @@ public class CSDB {
      * method to handle the query for the first option
      */
     public void option1() {
-        System.out.println("option1");
+        System.out.println("People:");
         //Insert SQL query here
+        try {
+            Connection db = DriverManager.getConnection(url, username, password);
+
+            java.sql.Statement st = db.createStatement();
+            ResultSet rs = st.executeQuery("select * from people");
+            while (rs.next()) {
+
+                System.out.print(rs.getString(1) + "\t\t");
+                System.out.print(rs.getString(2) + "\t\t");
+                System.out.println(rs.getString(3));
+            }
+
+            rs.close();
+            st.close();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
         wantToQuit();
     }
 
@@ -123,10 +152,6 @@ public class CSDB {
         } catch (java.lang.ClassNotFoundException e) {
             System.out.println(e);
         }
-
-        String url = "jdbc:postgresql://horton.elephantsql.com:5432/dluumnvl";
-        String username = "dluumnvl";
-        String password = "QmaWW2yvG8QXAgH6o2WdsbzCkIxLfkBk";
     }
 
     public void wantToQuit() {
@@ -166,23 +191,7 @@ public class CSDB {
         CSDB csdb = new CSDB();
         csdb.inputFromPlayer();
 
-//        try {
-//            Connection db = DriverManager.getConnection(url, username, password);
-//
-//            Statement st = db.createStatement();
-//            ResultSet rs = st.executeQuery("select * from test3");
-//            while (rs.next()) {
-//
-//                System.out.print(rs.getString(1) + " ");
-//                System.out.println(rs.getString(2) + " ");
-//            }
-//            rs.close();
-//            st.close();
-//
-//
-//        } catch (Exception e) {
-//            System.out.println(e);
-//        }
+        
     }
 
 }
