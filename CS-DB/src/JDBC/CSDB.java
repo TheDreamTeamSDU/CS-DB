@@ -89,10 +89,11 @@ public class CSDB {
                                          + "FROM Coaches\n"
                                          + "INNER JOIN People ON Coaches.coachName = People.nickname;");
             System.out.println(String.format("%-20s %-20s", "Name", "Team name"));
+            System.out.println("-----------------------------------------");
             while (rs.next()) {
                 System.out.println(String.format("%-20s %-20s", rs.getString(1), rs.getString(2)));
             }
-
+            System.out.print("-----------------------------------------");
             rs.close();
             st.close();
 
