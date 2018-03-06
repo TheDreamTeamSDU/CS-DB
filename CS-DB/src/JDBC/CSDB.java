@@ -86,8 +86,8 @@ public class CSDB {
 
             java.sql.Statement st = db.createStatement();
             ResultSet rs = st.executeQuery("SELECT People.name, Coaches.teamName\n"
-                                         + "FROM Coaches\n"
-                                         + "INNER JOIN People ON Coaches.coachName = People.nickname;");
+                    + "FROM Coaches\n"
+                    + "INNER JOIN People ON Coaches.coachName = People.nickname;");
             System.out.println(String.format("%-20s %-20s", "Name", "Team name"));
             System.out.println("-----------------------------------------");
             while (rs.next()) {
@@ -107,8 +107,34 @@ public class CSDB {
      * method to handle the query for the second option
      */
     public void option2() {
-        System.out.println("option2");
+        System.out.println("Names of winners:");
         //Insert SQL query here
+        try {
+            Connection db = DriverManager.getConnection(url, username, password);
+
+            java.sql.Statement st = db.createStatement();
+            ResultSet rs = st.executeQuery("SELECT name\n"
+                    + "FROM People\n"
+                    + "WHERE nickname IN (SELECT playerName\n"
+                    + "                   FROM PlaysFor\n"
+                    + "                   WHERE teamName IN (SELECT teamName\n"
+                    + "                                      FROM TournamentWinners))\n"
+                    + "OR  nickname IN (SELECT coachName\n"
+                    + "                 FROM coaches\n"
+                    + "                 WHERE teamName IN (SELECT teamName\n"
+                    + "                                    FROM TournamentWinners))");
+            System.out.println(String.format("%-20s", "Name"));
+            System.out.println("-----------------------------------------");
+            while (rs.next()) {
+                System.out.println(String.format("%-20s", rs.getString(1)));
+            }
+            System.out.println("-----------------------------------------");
+            rs.close();
+            st.close();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
         wantToQuit();
     }
 
