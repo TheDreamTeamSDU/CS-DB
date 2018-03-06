@@ -107,7 +107,7 @@ public class CSDB {
      * method to handle the query for the second option
      */
     public void option2() {
-        System.out.println("Names of winners:");
+        System.out.println("\nNames of winners:");
         //Insert SQL query here
         try {
             Connection db = DriverManager.getConnection(url, username, password);
@@ -142,7 +142,7 @@ public class CSDB {
      * method to handle the query for the third option
      */
     public void option3() {
-        System.out.println("Teamnames and amount of players");
+        System.out.println("\nTeamnames and amount of players");
         //Insert SQL query here
         try {
             Connection db = DriverManager.getConnection(url, username, password);
@@ -170,7 +170,7 @@ public class CSDB {
      * method to handle the query for the fourth option
      */
     public void option4() {
-        System.out.println("option4");
+        System.out.println("\nTurnaments with x amount of teams");
         System.out.println("Enter a number of teams");
         scanner = new Scanner(System.in);
         System.out.println("Input a number and press enter");
