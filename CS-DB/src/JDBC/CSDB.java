@@ -142,8 +142,27 @@ public class CSDB {
      * method to handle the query for the third option
      */
     public void option3() {
-        System.out.println("option3");
+        System.out.println("Teamnames and amount of players");
         //Insert SQL query here
+        try {
+            Connection db = DriverManager.getConnection(url, username, password);
+
+            java.sql.Statement st = db.createStatement();
+            ResultSet rs = st.executeQuery("SELECT teamName, COUNT(playerName)\n"
+                    + "FROM PlaysFor\n"
+                    + "GROUP BY teamName");
+            System.out.println(String.format("%-20s %-20s", "Name", "Amount"));
+            System.out.println("-----------------------------------------");
+            while (rs.next()) {
+                System.out.println(String.format("%-20s %-20s", rs.getString(1), rs.getString(2)));
+            }
+            System.out.println("-----------------------------------------");
+            rs.close();
+            st.close();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
         wantToQuit();
     }
 
