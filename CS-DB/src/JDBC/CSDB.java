@@ -97,6 +97,7 @@ public class CSDB {
      */
     public void option4() {
         System.out.println("option4");
+        System.out.println("Enter a number of teams");
         scanner = new Scanner(System.in);
         System.out.println("Input a number and press enter");
         if (scanner.hasNextInt()) {
