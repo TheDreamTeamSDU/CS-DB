@@ -79,7 +79,7 @@ public class CSDB {
      * method to handle the query for the first option
      */
     public void option1() {
-        System.out.println("People:");
+        System.out.println("Coaches and their team:");
         //Insert SQL query here
         try {
             Connection db = DriverManager.getConnection(url, username, password);
