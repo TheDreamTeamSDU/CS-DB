@@ -38,7 +38,7 @@ public class CSDB {
         System.out.println("Press \"1\" to see a all names of coaches and their team");
         System.out.println("Press \"2\" to see the names of all people who are on a team, which has won at least one tournament");
         System.out.println("Press \"3\" to see all names of teams and the number of players on that team");
-        System.out.println("Press \"4\" to see info about participating teams in a tournament");
+        System.out.println("Press \"4\" to obtain tournaments with x amount of participating teams");
     }
 
     /**
