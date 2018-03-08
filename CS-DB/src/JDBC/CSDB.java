@@ -223,13 +223,11 @@ public class CSDB {
         System.out.println("press \"y\" to quit or \"n\" to make a new selection");
         if (scanner.hasNext()) {
             String quit = scanner.next();
-            switch (quit) {
+            switch (quit.toLowerCase()) {
                 case "y":
-                case "Y":
                     System.exit(0);
                     break;
                 case "n":
-                case "N":
                     newInput();
                     break;
                 default:
