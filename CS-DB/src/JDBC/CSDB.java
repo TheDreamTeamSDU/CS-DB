@@ -96,6 +96,7 @@ public class CSDB {
             System.out.println("-----------------------------------------");
             rs.close();
             st.close();
+            db.close();
 
         } catch (Exception e) {
             System.out.println(e);
@@ -131,6 +132,7 @@ public class CSDB {
             System.out.println("-----------------------------------------");
             rs.close();
             st.close();
+            db.close();
 
         } catch (Exception e) {
             System.out.println(e);
@@ -159,6 +161,7 @@ public class CSDB {
             System.out.println("-----------------------------------------");
             rs.close();
             st.close();
+            db.close();
 
         } catch (Exception e) {
             System.out.println(e);
@@ -193,6 +196,7 @@ public class CSDB {
                 System.out.println("-----------------------------------------");
                 rs.close();
                 st.close();
+                db.close();
 
             } catch (Exception e) {
                 System.out.println(e);
